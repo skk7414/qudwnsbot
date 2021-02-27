@@ -78,7 +78,7 @@ client.on("message", (message) => {
       { name: "!초대코드2", desc: "봇이 들어가있는 모든 채널의 초대 코드 표기" },
     ]
     let commandStr = ""
-    let embed = new Discord.MessageEmbed().setAuthor("Help of 성클킹 BOT", helpImg).setColor("#186de6").setFooter(`성클킹 BOT ❤️`).setTimestamp()
+    let embed = new Discord.MessageEmbed().setAuthor("Help of 성클킹 BOT", helpImg).setColor("#186de6").setFooter(`병준 BOT ❤️`).setTimestamp()
 
     commandList.forEach((x) => {
       commandStr += `• \`\`${changeCommandStringLength(`${x.name}`)}\`\` : **${x.desc}**\n`
@@ -121,7 +121,7 @@ client.on("message", (message) => {
     if (message.member != null) {
       // 채널에서 공지 쓸 때
       let contents = message.content.slice("!전체공지2".length)
-      let embed = new Discord.MessageEmbed().setAuthor("공지 of 성클킹 BOT").setColor("#186de6").setFooter(`성클킹 BOT ❤️`).setTimestamp()
+      let embed = new Discord.MessageEmbed().setAuthor("공지 of 성클킹 BOT").setColor("#186de6").setFooter(`병준 BOT ❤️`).setTimestamp()
 
       embed.addField("공지: ", contents)
 
@@ -231,4 +231,20 @@ client.on('message' ,msg=>{
     msg.reply("@everyone 관리자님이 잠수가 끝났습니다")
   }
 })
+module.exports = {
+  name: 'avatar',
+  description: 'Get the avatar URL of the tagged user(s), or your own avatar.',
+  execute(message) {
+      if (!message.mentions.users.size) {
+          return message.channel.send(`Your avatar: ${message.author.displayAvatarURL({ dynamic: true })}`);
+      }
+
+      const avatarList = message.mentions.users.map(user => {
+          return `${user.username}'s avatar: ${user.displayAvatarURL({ dynamic: true })}`;
+      });
+
+      message.channel.send(avatarList);
+  },
+};
+
 client.login(token)
