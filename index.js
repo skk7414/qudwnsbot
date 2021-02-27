@@ -13,18 +13,17 @@ SERVER MEMBERS INTENT 활성화를 필요로 합니다.
 */
 
 const Discord = require("discord.js")
-const intent_list = new Discord.Intents(["GUILD_MEMBERS", "GUILD_MESSAGES", "GUILDS", "GUILD_INVITES"])
 const client = new Discord.Client({ ws: { intents: intent_list } })
-const token = process.argv.length == 2 ? process.env.token : ""
-const welcomeChannelName = "✨안녕하세요" // 입장 시 환영메시지를 전송 할 채널의 이름을 입력하세요.
-const byeChannelName = "✨안녕히가세요" // 퇴장 시 메시지를 전송 할 채널의 이름을 입력하세요.
+const token = "Nzg2NTQxMTkyNTM1MjEyMDYz.X9H5kQ.xX6narLrfBYgMH2Nb7hofVJRnVE"
+const welcomeChannelName = "안녕하세요" // 입장 시 환영메시지를 전송 할 채널의 이름을 입력하세요.
+const byeChannelName = "안녕히가세요" // 퇴장 시 메시지를 전송 할 채널의 이름을 입력하세요.
 const welcomeChannelComment = "이서버에 오신걸 환영합니다.✨" // 입장 시 전송할 환영메시지의 내용을 입력하세요.
 const byeChannelComment = "안녕히가세요.✨" // 퇴장 시 전송할 메시지의 내용을 입력하세요.
 const roleName = "게스트" // 입장 시 지급 할 역할의 이름을 적어주세요.
 
 client.on("ready", () => {
   console.log("켰다.")
-  client.user.setPresence({ activity: { name: "24시간 서버관리중[skk[/help]]" }, status: "online" })
+  client.user.setPresence({ activity: { name: "[/help]" }, status: "online" })
 })
 
 client.on("guildMemberAdd", (member) => {
